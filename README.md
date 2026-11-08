@@ -1,8 +1,16 @@
 # Art of War
 
+[Español](README.es.md)
+
 A Cataclysm-style bar for Retribution Paladins in World of Warcraft 3.3.5a (WotLK) that lights up when **The Art of War** procs.
 
 When the proc is up, the bar glows with its golden runes, so you know at a glance that your next Flash of Light or Exorcism is instant.
+
+| No proc | The Art of War is up |
+|---|---|
+| ![Unlit bar](images/unlit.png) | ![Lit bar](images/proc.png) |
+
+![Art of War options](images/menu.png)
 
 ## Features
 

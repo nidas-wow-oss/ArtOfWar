@@ -1,8 +1,16 @@
 # Art of War
 
+[English](README.md)
+
 Una barra estilo Cataclysm para paladines Reprensión en World of Warcraft 3.3.5a (WotLK) que se enciende cuando salta **El Arte de la Guerra**.
 
 Cuando el proc está activo, la barra brilla con sus runas doradas y sabés de un vistazo que tu próximo Destello de Luz o Exorcismo es instantáneo.
+
+| Sin proc | Con El Arte de la Guerra |
+|---|---|
+| ![Barra apagada](images/unlit.png) | ![Barra encendida](images/proc.png) |
+
+![Opciones de Art of War](images/menu.png)
 
 ## Funciones
 

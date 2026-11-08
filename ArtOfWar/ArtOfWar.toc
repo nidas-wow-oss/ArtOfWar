@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: Art of War
+## Notes: Cataclysm-style bar that lights up when The Art of War procs. Options: /aow
+## Author: Nidhaus
+## Version: 2.0
+## SavedVariables: ArtOfWarDB, MiDestelloDB
+
+ArtOfWar.lua

@@ -401,7 +401,6 @@ end)
 panel.okay = function() end
 panel.cancel = function() end
 panel.default = function() Restaurar() end
-InterfaceOptions_AddCategory(panel)
 
 frame:SetScript("OnDragStart", function(self)
     if desbloqueado then self:StartMoving() end
@@ -420,11 +419,22 @@ frame:RegisterEvent("UNIT_AURA")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 
+local esPaladin = true
 local migrar = false
 
 frame:SetScript("OnEvent", function(self, event, arg1)
     if event == "ADDON_LOADED" then
         if arg1 ~= ADDON then return end
+
+        local _, clase = UnitClass("player")
+        if clase ~= "PALADIN" then
+            esPaladin = false
+            self:UnregisterAllEvents()
+            self:SetScript("OnUpdate", nil)
+            self:Hide()
+            return
+        end
+        InterfaceOptions_AddCategory(panel)
         if type(ArtOfWarDB) ~= "table" then
 
             if type(MiDestelloDB) == "table" then ArtOfWarDB = MiDestelloDB else ArtOfWarDB = {} end
@@ -462,6 +472,10 @@ SLASH_ARTOFWAR1 = "/aow"
 SLASH_ARTOFWAR2 = "/artofwar"
 SLASH_ARTOFWAR3 = "/destello"
 SlashCmdList["ARTOFWAR"] = function(msg)
+    if not esPaladin then
+        Msg("this addon is only for Paladins.")
+        return
+    end
     msg = strlower(strtrim(msg or ""))
     local db = ArtOfWarDB
     if not db then return end

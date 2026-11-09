@@ -418,6 +418,12 @@ frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("UNIT_AURA")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
+frame:RegisterEvent("UNIT_ENTERED_VEHICLE")
+frame:RegisterEvent("UNIT_EXITED_VEHICLE")
+
+local function ActualizarVehiculo()
+    if UnitHasVehicleUI("player") then frame:Hide() else frame:Show() end
+end
 
 local esPaladin = true
 local migrar = false
@@ -455,6 +461,10 @@ frame:SetScript("OnEvent", function(self, event, arg1)
             GuardarPosicion()
         end
         Anclar()
+        ActualizarVehiculo()
+    elseif event == "UNIT_ENTERED_VEHICLE" or event == "UNIT_EXITED_VEHICLE" then
+        if arg1 == "player" then ActualizarVehiculo() end
+        return
     elseif event == "PLAYER_REGEN_ENABLED" then
         if anclaPendiente then
             if migrar then migrar = false GuardarPosicion() end
